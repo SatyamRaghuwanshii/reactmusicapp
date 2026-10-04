@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API = import.meta.env.VITE_API_URL;
+const SEARCH_API = import.meta.env.VITE_SEARCH_API_URL || API;
 
 export const searchAll = async (query) => {
     const response = await axios.get(`${API}/search`, {
@@ -56,7 +57,7 @@ export const trending = async (limit = 50) => {
 };
 
 export const searchSongs = async (query, page = 0, limit = 20) => {
-    const response = await axios.get(`${API}/search/songs`, {
+    const response = await axios.get(`${SEARCH_API}/search/songs`, {
         params: {
             query,
             page,
